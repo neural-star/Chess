@@ -2,8 +2,9 @@ import io
 from fastapi import APIRouter
 from matplotlib import pyplot as plt
 from ..services.stockfish_eval import eval_moves
+from ..services.stockfish_best import best_eval_moves
 
-router = APIRouter()
+router = APIRouter(prefix="/analysis", tags=["analysis"])
 
 @router.post("/eval")
 def eval_game(moves: list[str]):
@@ -16,3 +17,14 @@ def eval_game(moves: list[str]):
     fig.savefig(buf, format="png")
     buf.seek(0)
     return StreamingResponse(buf, media_type="image/png")
+
+class AnalysisCompareOut(BaseModel):
+    moves: List[str]
+    actual_eval: List[float]
+    best_eval:   List[float]
+
+@router.post("/compare", response_model=AnalysisCompareOut)
+def compare_game(moves: List[str]):
+    actual = eval_moves(moves)
+    best   = best_eval_moves(moves)
+    return {"moves": moves, "actual_eval": actual, "best_eval": best}
