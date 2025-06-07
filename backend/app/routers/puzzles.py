@@ -1,4 +1,6 @@
 import random, chess, chess.pgn
+from fastapi import APIRouter
+
 router = APIRouter()
 # PGN から詰将棋集を読み込んでおく
 puzzles = load_pgn("tactics.pgn")
