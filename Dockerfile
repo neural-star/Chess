@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 RUN apt-get update && apt-get install -y \
     libcairo2 \
@@ -9,14 +9,11 @@ RUN apt-get update && apt-get install -y \
     stockfish \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /app
 
-WORKDIR /usr/src/app
-
-COPY requirements.txt ./
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app/ ./app/
+COPY app/ ./app
 
-EXPOSE 786
-
-ENTRYPOINT ["python", "app/main.py"]
+CMD ["python", "-m", "app.main"]
