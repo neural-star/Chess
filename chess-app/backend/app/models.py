@@ -1,5 +1,5 @@
 from sqlalchemy import (
-    Column, String, Integer, DateTime, ForeignKey, Boolean
+    Column, String, Integer, DateTime, ForeignKey, Boolean, ForeignKey
 )
 from sqlalchemy.orm import relationship
 from .database import Base
@@ -27,3 +27,14 @@ class Game(Base):
     time_control = Column(String)  # "5+0","3+2" など
     player_white = relationship("User", foreign_keys=[white_id])
     player_black = relationship("User", foreign_keys=[black_id])
+
+class FriendRequest(Base):
+    __tablename__ = "friend_requests"
+    id           = Column(Integer, primary_key=True, index=True)
+    from_user_id = Column(Integer, ForeignKey("users.id"))
+    to_user_id   = Column(Integer, ForeignKey("users.id"))
+    accepted     = Column(Boolean, default=False)
+    created_at   = Column(DateTime, default=datetime.datetime.utcnow)
+
+    from_user = relationship("User", foreign_keys=[from_user_id])
+    to_user   = relationship("User", foreign_keys=[to_user_id])
