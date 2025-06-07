@@ -4,3 +4,4 @@ stockfish
 cairosvg
 Pillow
 sqlalchemy
+matplotlib
