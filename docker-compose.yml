@@ -1,36 +1,11 @@
 version: "3.8"
+
 services:
-  db:
-    image: postgres:15
+  chess-app:
+    build: .
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./app/users.db:/usr/src/app/app/users.db   # 対局成績DBの永続化
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
-  backend:
-    build: ./backend
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-    volumes:
-      - ./backend:/usr/src/app/backend
-    environment:
-      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
-      SECRET_KEY: ${SECRET_KEY}
-    depends_on:
-      - db
-    ports:
-      - "8000:8000"
-
-  frontend:
-    build: ./frontend
-    command: yarn start
-    volumes:
-      - ./frontend:/usr/src/app/frontend
-    ports:
-      - "3000:3000"
-
-volumes:
-  db-data:
+      - TZ=Asia/Tokyo
