@@ -1,0 +1,38 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+export default function Lobby() {
+  const [skill, setSkill]           = useState(1200);
+  const [timeControl, setTimeControl] = useState("5+0");
+  const navigate = useNavigate();
+
+  const joinMatch = async () => {
+    const token = localStorage.getItem("token");
+    const resp = await axios.post(
+      "/match/join",
+      { skill, timeControl },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    if (resp.data.game_id) {
+      navigate(`/game/${resp.data.game_id}`);
+    } else {
+      alert("対戦相手を待っています…");
+    }
+  };
+
+  return (
+    <div className="p-4">
+      <h2>マッチメイキング</h2>
+      <label>スキルレベル: {skill}</label>
+      <input type="range" min="800" max="2400" value={skill}
+             onChange={(e)=>setSkill(e.target.value)} />
+      <select onChange={(e)=>setTimeControl(e.target.value)}>
+        <option value="3+0">3分+0秒</option>
+        <option value="5+0">5分+0秒</option>
+        <option value="10+5">10分+5秒</option>
+      </select>
+      <button onClick={joinMatch}>対戦を開始</button>
+    </div>
+  );
+}
