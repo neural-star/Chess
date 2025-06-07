@@ -489,4 +489,4 @@ with gr.Blocks() as app:
             gr.Button("FEN出力").click(export_fen, None, out_fen)
             gr.Button("PGN出力").click(export_pgn, None, out_pgn)
 
-    app.launch(server_name="0.0.0.0", server_port=7860)
+    app.launch(server_name="0.0.0.0", server_port=7860, share=True)
