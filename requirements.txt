@@ -1,5 +1,5 @@
-gradio==3.35.0
-python-chess==1.999
-Pillow==9.5.0
-cairosvg==2.6.3
-stockfish==3.1.1
+gradio
+python-chess
+Pillow
+cairosvg
+stockfish
