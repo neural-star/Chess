@@ -42,6 +42,10 @@ docker build -t chess .
 ```bash
 docker run -p 7860:7860 chess
 ```
+もし SQLite のデータベースファイルの場所を指定したい場合や、他のデータベースURLを使いたい場合は、DATABASE_URL 環境変数を直接渡して起動できます。
+```bash
+docker run -e DATABASE_URL="sqlite:///./chess.db" -p 7860:7860 chess
+```
 
 ### 4. アクセス
 
