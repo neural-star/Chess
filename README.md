@@ -22,12 +22,12 @@ AIチェス対戦を楽しめるWebアプリです。
 
 > ⚠️ Docker は事前にインストールしてください。  
 > Ubuntu では `sudo apt install docker.io`  
-> macOS では [Docker Desktop](https://www.docker.com/products/docker-desktop/) を使用
+> Windos/macOS では [Docker Desktop](https://www.docker.com/products/docker-desktop/) を使用
 
 ### 1. リポジトリをクローン
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/chess-app.git
+git clone https://github.com/neural-star/Chess.git
 cd chess-app
 ```
 
@@ -39,7 +39,9 @@ docker build -t chess-app .
 
 ### 3. Docker コンテナを起動
 
+```bash
 docker run -p 7860:7860 chess-app
+```
 
 ### 4. アクセス
 
