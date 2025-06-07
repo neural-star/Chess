@@ -28,19 +28,19 @@ AIチェス対戦を楽しめるWebアプリです。
 
 ```bash
 git clone https://github.com/neural-star/Chess.git
-cd chess-app
+cd chess
 ```
 
 ### 2. Docker イメージをビルド
 
 ```bash
-docker build -t chess-app .
+docker build -t chess .
 ```
 
 ### 3. Docker コンテナを起動
 
 ```bash
-docker run -p 7860:7860 chess-app
+docker run -p 7860:7860 chess
 ```
 
 ### 4. アクセス
