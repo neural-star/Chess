@@ -39,6 +39,19 @@ class MoveRes(BaseModel):
     fen: str
     times: Dict[str, int]
 
+class FriendRequestCreate(BaseModel):
+    to_user_id: int
+
+class FriendRequestOut(BaseModel):
+    id: int
+    from_user_id: int
+    to_user_id: int
+    accepted: bool
+
+class FriendAction(BaseModel):
+    request_id: int
+    accept: bool
+
 # --- Analysis ---
 class AnalysisReq(BaseModel):
     moves: List[str]
