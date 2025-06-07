@@ -1,6 +1,7 @@
 import io
 from fastapi import APIRouter
 from matplotlib import pyplot as plt
+from pydantic import BaseModel
 from ..services.stockfish_eval import eval_moves
 from ..services.stockfish_best import best_eval_moves
 
