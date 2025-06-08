@@ -1,12 +1,17 @@
-FROM python:3.11-slim
+FROM python:3.10-slim
 
 RUN apt-get update && apt-get install -y \
-    libcairo2 \
-    libpango-1.0-0 \
-    libpangocairo-1.0-0 \
-    libgdk-pixbuf2.0-0 \
-    shared-mime-info \
+    curl \
+    wget \
+    unzip \
+    build-essential \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    librsvg2-bin \
     stockfish \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -14,6 +19,4 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app/ ./app
-
-CMD ["python", "-m", "app.main"]
+CMD ["python", "app.py"]
