@@ -1,5 +1,5 @@
 gradio
 python-chess
-Pillow
 cairosvg
+pillow
 stockfish
