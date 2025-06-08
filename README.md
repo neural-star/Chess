@@ -43,6 +43,12 @@ docker build -t chess .
 docker run -p 7860:7860 chess
 ```
 
+### docker-compose での起動（オプション）
+
+```bash
+docker-compose up --build
+```
+
 ### 4. アクセス
 
 起動後、以下のURLにアクセスしてチェスをプレイできます：
