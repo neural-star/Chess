@@ -3,9 +3,9 @@ version: "3.8"
 services:
   chess-app:
     build: .
+    container_name: chess_app
     ports:
       - "7860:7860"
     volumes:
-      - ./app/users.db:/usr/src/app/app/users.db   # 対局成績DBの永続化
-    environment:
-      - TZ=Asia/Tokyo
+      - .:/app
+    restart: unless-stopped
