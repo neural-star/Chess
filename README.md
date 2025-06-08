@@ -53,3 +53,15 @@ docker-compose up --build
 
 起動後、以下のURLにアクセスしてチェスをプレイできます：
 http://localhost:7860
+
+### 📁 フォルダ構成
+
+chess/
+├── app.py
+├── puzzle.py
+├── puzzle.json
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
+
