@@ -27,7 +27,7 @@ AIチェス対戦を楽しめるWebアプリです。
 ### 1. リポジトリをクローン
 
 ```bash
-git clone https://github.com/neural-star/Chess.git
+git clone https://github.com/neural-star/chess.git
 cd chess
 ```
 
@@ -56,6 +56,7 @@ http://localhost:7860
 
 ### 📁 フォルダ構成
 
+```bash
 chess/
 ├── app.py
 ├── puzzle.py
@@ -64,4 +65,4 @@ chess/
 ├── docker-compose.yml
 ├── requirements.txt
 └── README.md
-
+```
