@@ -12,7 +12,7 @@ body:
     attributes:
       label: バグの説明
       description: バグの内容を詳しく説明してください
-      placeholder: できるだけ具体的に記述してください
+      placeholder: エラーの内容を書いてくれると嬉しいです
     validations:
       required: true
 
@@ -36,15 +36,3 @@ body:
       description: 本来期待される動作を記述してください
     validations:
       required: true
-
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: 発生したブラウザ
-      multiple: true
-      options:
-        - Chrome
-        - Firefox
-        - Safari
-        - Edge
-        - その他
